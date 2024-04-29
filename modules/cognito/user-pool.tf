@@ -63,7 +63,7 @@ resource "aws_cognito_user_pool" "user-pool" {
   verification_message_template {
     default_email_option  = "CONFIRM_WITH_LINK"
     email_subject_by_link = "Welcome to Ikigai Labs"
-    email_message_by_link = file("email_message.html")
+    email_message_by_link = file("./email_message.html")
   }
 }
 
