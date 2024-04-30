@@ -47,8 +47,8 @@ resource "aws_elasticsearch_domain" "component-logs-elasticsearch" {
   }
 
   vpc_options {    
-    subnet_ids  = [data.aws_subnet.private_subnet_1.id,data.aws_subnet.private_subnet_2.id]
-    security_group_ids = [data.aws_security_group.vpc_security_group.id, data.aws_security_group.vpn_security_group.id]
+    subnet_ids  = [var.private_subnet_1_id, var.private_subnet_2_id]
+    security_group_ids = [var.vpc_security_group_id, var.vpn_security_group_id]
   }
 
   ebs_options {
@@ -67,7 +67,7 @@ resource "aws_elasticsearch_domain" "component-logs-elasticsearch" {
             "Action": "es:*",
             "Principal": "*",
             "Effect": "Allow",
-            "Resource": "arn:aws:es:me-central-1:${data.aws_caller_identity.current.account_id}:domain/component-logs/*"
+            "Resource": "arn:aws:es:${var.aws_region}:${data.aws_caller_identity.current.account_id}:domain/component-logs/*"
         }
     ]
   }
@@ -121,8 +121,8 @@ resource "aws_elasticsearch_domain" "monitoring-elasticsearch" {
   }
 
   vpc_options {    
-    subnet_ids  = [data.aws_subnet.private_subnet_1.id,data.aws_subnet.private_subnet_2.id]
-    security_group_ids = [data.aws_security_group.vpc_security_group.id, data.aws_security_group.vpn_security_group.id]
+    subnet_ids  = [var.private_subnet_1_id,var.private_subnet_2_id]
+    security_group_ids = [var.vpc_security_group_id, var.vpn_security_group_id]
   }
 
   ebs_options {
@@ -139,7 +139,7 @@ resource "aws_elasticsearch_domain" "monitoring-elasticsearch" {
             "Action": "es:*",
             "Principal": "*",
             "Effect": "Allow",
-            "Resource": "arn:aws:es:me-central-1:${data.aws_caller_identity.current.account_id}:domain/monitoring/*"
+            "Resource": "arn:aws:es:${var.aws_region}:${data.aws_caller_identity.current.account_id}:domain/monitoring/*"
         }
     ]
   }

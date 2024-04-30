@@ -18,13 +18,11 @@ variable "vpc_name" {
 variable "availability_zone_1" {
   type        = string
   description = "First of two availability zones for subnet distribution"
-  default     = "us-east-2a"
 }
 
 variable "availability_zone_2" {
   type        = string
   description = "Second of two availability zones for subnet distribution"
-  default     = "us-east-2b"
 }
 
 variable "private_subnet_1_name" {

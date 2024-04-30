@@ -3,34 +3,29 @@ variable "aws_region" {
   type        = string
 }
 
-variable "vpc_name" {
-  description = "name the vpc the cluster will be under"
+variable "vpc_id" {
+  description = "ID of the VPC that the EKS cluster will live in"
   type        = string
-  default     = "ikigai-vpc"
 }
 
-variable "rds_subnet_name_1" {
-  description = "Name of the first rds VPC subnet"
+variable "rds_subnet_1_id" {
+  description = "ID of the first rds VPC subnet"
   type        = string
-  default     = "rds-1"
 }
 
-variable "rds_subnet_name_2" {
-  description = "Name of the second rds VPC subnet"
+variable "rds_subnet_2_id" {
+  description = "ID of the second rds VPC subnet"
   type        = string
-  default     = "rds-2"
 }
 
-variable "vpc_security_group_name" {
+variable "vpc_security_group_id" {
   type        = string
-  description = "Name of main VPC security group"
-  default     = "vpc-security-group"
+  description = "ID of VPC security group which allows intra-VPC traffic"
 }
 
-variable "vpn_security_group_name" {
+variable "vpn_security_group_id" {
   type        = string
-  description = "Name of vpn VPC security group"
-  default     = "vpn-security-group"
+  description = "ID of VPC security group which allows VPN traffic"
 }
 
 variable "port" {
@@ -235,36 +230,6 @@ variable "service_metadata_username" {
 
 variable "service_metadata_password" {
   description = "this is the service_metadata server password"
-  type        = string
-}
-
-
-# fivetran
-variable "fivetran_server_name" {
-  description = "the name for the fivetran server"
-  type        = string
-  default     = "fivetran-connection-ikigai"
-}
-
-variable "fivetran_server_storage" {
-  description = "the allocated storage for the fivetran server"
-  type        = number
-  default     = 55
-}
-
-variable "fivetran_server_instance" {
-  description = "the hardware associated with the fivetran server"
-  type        = string
-  default     = "db.m5.xlarge"
-}
-
-variable "fivetran_username" {
-  description = "this is the fivetran server username"
-  type        = string
-}
-
-variable "fivetran_password" {
-  description = "this is the fivetran server password"
   type        = string
 }
 

@@ -73,23 +73,3 @@ output "database_storage_db_username" {
 output "database_storage_db_password" {
   value = var.database_password
 }
-
-output "fivetran_db_hostname" {
-  value = aws_db_instance.fivetran-connection-prod.address
-}
-
-output "fivetran_db_port" {
-  value = var.port
-}
-
-output "fivetran_db_name" {
-  value = aws_db_instance.fivetran-connection-prod.db_name
-}
-
-output "fivetran_db_username" {
-  value = var.fivetran_username
-}
-
-output "fivetran_db_password" {
-  value = var.fivetran_password
-}

@@ -3,22 +3,19 @@ variable "aws_region" {
   type        = string
 }
 
-variable "vpc_name" {
-  description = "Name of the VPC that the EKS cluster will live in"
+variable "vpc_id" {
+  description = "ID of the VPC that the EKS cluster will live in"
   type        = string
-  default     = "ikigai-vpc"
 }
 
-variable "eks_subnet_name_1" {
-  description = "Name of the first private VPC subnet"
+variable "private_subnet_1_id" {
+  description = "ID of the first private VPC subnet"
   type        = string
-  default     = "private-1"
 }
 
-variable "eks_subnet_name_2" {
-  description = "Name of the second private VPC subnet"
+variable "private_subnet_2_id" {
+  description = "ID of the second private VPC subnet"
   type        = string
-  default     = "private-2"
 }
 
 variable "cluster_name" {

@@ -3,34 +3,29 @@ variable "aws_region" {
   description = "AWS region"
 }
 
-variable "vpc_name" {
-  description = "Name of the VPC that the Elasticsearch instance will live in"
+variable "vpc_id" {
+  description = "ID of the VPC that the EKS cluster will live in"
   type        = string
-  default     = "ikigai-vpc"
 }
 
-variable "private_subnet_name_1" {
-  description = "Name of the first private VPC subnet"
+variable "private_subnet_1_id" {
+  description = "ID of the first private VPC subnet"
   type        = string
-  default     = "private-1"
 }
 
-variable "private_subnet_name_2" {
-  description = "Name of the second private VPC subnet"
+variable "private_subnet_2_id" {
+  description = "ID of the second private VPC subnet"
   type        = string
-  default     = "private-2"
 }
 
-variable "vpc_security_group_name" {
+variable "vpc_security_group_id" {
   type        = string
-  description = "Name of main VPC security group"
-  default     = "vpc-security-group"
+  description = "ID of VPC security group which allows intra-VPC traffic"
 }
 
-variable "vpn_security_group_name" {
+variable "vpn_security_group_id" {
   type        = string
-  description = "Name of vpn VPC security group"
-  default     = "vpn-security-group"
+  description = "ID of VPC security group which allows VPN traffic"
 }
 
 variable "component_logs_name" {

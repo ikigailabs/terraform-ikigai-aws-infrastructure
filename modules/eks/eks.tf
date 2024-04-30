@@ -1,28 +1,6 @@
-data "aws_vpc" "ikigai_vpc" {
-  tags = {
-    "Name" = var.vpc_name
-  }
-}
-
-data "aws_subnet" "eks_private_1" {
-  vpc_id = data.aws_vpc.ikigai_vpc.id
-  tags = {
-    "Name" = var.eks_subnet_name_1
-  }
-}
-
-data "aws_subnet" "eks_private_2"  {
-  vpc_id = data.aws_vpc.ikigai_vpc.id
-  tags = {
-    "Name" = var.eks_subnet_name_2
-  }
-}
-
 data "aws_iam_policy" "ebs_csi_policy" {
   arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 }
-
-
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
@@ -31,8 +9,8 @@ module "eks" {
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
 
-  vpc_id                         = data.aws_vpc.ikigai_vpc.id
-  subnet_ids                     = [data.aws_subnet.eks_private_1.id, data.aws_subnet.eks_private_2.id]
+  vpc_id                         = var.vpc_id
+  subnet_ids                     = [var.private_subnet_1_id, var.private_subnet_2_id]
   cluster_endpoint_public_access = false
 
   eks_managed_node_group_defaults = {
