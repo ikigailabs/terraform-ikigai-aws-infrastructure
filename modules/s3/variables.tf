@@ -37,7 +37,6 @@ variable "ikigai_dataset_bucket_name" {
   description = "Name of S3 bucket for datasets"
   type        = string
   default     = "ikigai-datasets"
-
 }
 
 variable "ikigai_models_bucket_name" {
