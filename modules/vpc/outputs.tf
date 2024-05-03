@@ -1,3 +1,8 @@
+output "vpc_region" {
+  value       = var.aws_region
+  description = "The AWS region that the VPC infrastructure was deployed in"
+}
+
 output "vpc_id" {
   value       = aws_vpc.prod.id
   description = "The ID of the VPC that Elasticsearch, EKS, and RDS will live in"

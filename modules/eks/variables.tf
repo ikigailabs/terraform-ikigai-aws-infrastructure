@@ -21,13 +21,13 @@ variable "private_subnet_2_id" {
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
-  default     = "prod-cluster"
+  default     = "ikigai-cluster"
 }
 
 variable "kubernetes_version" {
   description = "the version of kubernetes the cluster will be running"
   type        = string
-  default     = 1.27
+  default     = "1.27"
 }
 
 variable "ami_type" {

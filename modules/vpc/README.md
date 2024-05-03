@@ -1,4 +1,4 @@
-# Ikigai VPC Terraform Module
+# Ikigai Virtual Private Cloud Terraform Module
 
 This module allows you to create the AWS Virtual Private Cloud infrastructure necessary for an Ikigai application setup.
 
@@ -25,7 +25,7 @@ It is possible to further customize the deployment using the variables listed be
 |------|-------------|------|---------|:--------:|
 | availability_zone_1 | The first of two availablity zones to deploy subnets in - value should be the `aws_region` input followed by the az identifier | `string` | n/a | yes |
 | availability_zone_2 | The second of two availablity zones to deploy subnets in - value should be the `aws_region` input followed by the az identifier | `string` | n/a | yes |
-| aws_region | The AWS region that the DynamoDB infrastructure will be deployed in | `string` | n/a | yes |
+| aws_region | The AWS region that the VPC infrastructure will be deployed in | `string` | n/a | yes |
 | internet_gateway_name | Name of the internet gateway for the Ikigai VPC | `string`  | `"internet-gateway"` | no |
 | nat_gateway_name | Name of the NAT gateway for the Ikigai VPC | `string`  | `"nat-gateway"` | no |
 | nat_subnet_cidr | CIDR block of the subnet that houses the NAT Gateway | `string` | `"16.0.5.0/24"` | no |
@@ -59,5 +59,6 @@ These outputs will serve as inputs for other Ikigai modules that need a VPC, nam
 | rds_subnet_1_id | Id of the first of two RDS subnets |
 | rds_subnet_2_id | Id of the second of two RDS subnets |
 | vpc_id | Id of the VPC |
+| vpc_region | The AWS region that the VPC infrastructure was deployed in |
 | vpc_security_group_id | Id of the security group for allowing intra-VPC traffic |
 | vpn_security_group_id | Id of the security group for allowing traffic through the VPN |
