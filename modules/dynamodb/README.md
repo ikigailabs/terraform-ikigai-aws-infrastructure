@@ -17,13 +17,13 @@ module "aws-infrastructure_dynamodb" {
 
 A usage of the module that changes the name of the connections DynamoDB table, as well as its read and write capacity, would be:
 
-```
+```hcl
 module "aws-infrastructure_dynamodb" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/dynamodb"
   version = "~> 0.0"
   
   aws_region = "us-east-2"
-  
+
   connection_table_name = "new-table-name"
   connection_table_read_capacity = 1
   connection_table_write_capacity = 1
