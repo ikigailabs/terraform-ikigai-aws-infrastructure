@@ -28,7 +28,7 @@ It is possible to further customize the deployment using the variables listed be
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| aws\_region | The AWS region that the cognito infrastructure will be deployed in | string | n/a | yes |
+| aws\_region | The AWS region that the cognito infrastructure will be deployed in | `string` | n/a | yes |
 | base\_hostname | The hostname of the ikigai deployment - this value will be used to construct the callback and logout urls | `string` | n/a | yes |
 | google\_client\_id | The Google OAuth client id that will allow sign-in through Google | `string` | n/a | yes |
 | google\_client\_secret | The Google OAuth client secret that will allow sign-in through Google | `string` | n/a | yes |
@@ -42,7 +42,7 @@ It is possible to further customize the deployment using the variables listed be
 | password\_minimum\_length | Minimum length of the password that new users have to set. | `number` | `10` | no |
 | refresh\_token\_validity | Time limit after which the refresh token is no longer valid and cannot be used. The unit of time is controlled by the `refresh_token_validity_units` variable | `number` | `30` | no |
 | refresh\_token\_validity\_units | Time unit in for the value in `refresh_token_validity` | `string` | `"days"` | no |
-| temporary\_password\_validity\_days | Rhe number of days a temporary password is valid | `number` | `7` | no |
+| temporary\_password\_validity\_days | The number of days a temporary password is valid | `number` | `7` | no |
 | user\_pool\_name | Name of the Ikigai Cognito user pool | `string` | `"ikigai-user-pool"` | no |
 
 ## Outputs
