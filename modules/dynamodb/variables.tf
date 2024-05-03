@@ -6,7 +6,7 @@ variable "aws_region" {
 variable "connection_table_name" {
   type        = string
   description = "Ikigai connections DynamoDB table name"
-  default     = "connections-prod"
+  default     = "connections-ikigai"
 }
 
 variable "connection_table_read_capacity" {
@@ -24,7 +24,7 @@ variable "connection_table_write_capacity" {
 variable "facet_templates_table_name" {
   type        = string
   description = "Ikigai facet templates DynamoDB table name"
-  default     = "facet-templates-prod"
+  default     = "facet-templates-ikigai"
 }
 
 variable "facet_templates_table_read_capacity" {
@@ -42,7 +42,7 @@ variable "facet_templates_table_write_capacity" {
 variable "lock_table_name" {
   type        = string
   description = "Ikigai lock DynamoDB table name"
-  default     = "lock-table-prod"
+  default     = "lock-table-ikigai"
 }
 
 variable "lock_table_read_capacity" {
@@ -60,7 +60,7 @@ variable "lock_table_write_capacity" {
 variable "pypr_lock_table_name" {
   type        = string
   description = "Ikigai pypr lock DynamoDB table name"
-  default     = "pypr-locks-prod"
+  default     = "pypr-locks-ikigai"
 }
 
 variable "pypr_lock_table_read_capacity" {
@@ -78,7 +78,7 @@ variable "pypr_lock_table_write_capacity" {
 variable "remote_jobs_table_name" {
   type        = string
   description = "Ikigai remote jobs DynamoDB table name"
-  default     = "remote-jobs-prod"
+  default     = "remote-jobs-ikigai"
 }
 
 variable "remote_jobs_table_read_capacity" {
