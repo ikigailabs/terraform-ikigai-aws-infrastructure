@@ -26,7 +26,7 @@ variable "temporary_password_validity_days" {
   default     = 7
 }
 
-variable "user_pool_domain_name" {
+variable "user_pool_domain" {
   type        = string
   description = "Domain name of the Ikigai Cognito user pool"
 }

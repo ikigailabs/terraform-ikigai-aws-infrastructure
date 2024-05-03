@@ -68,12 +68,12 @@ resource "aws_cognito_user_pool" "user-pool" {
 }
 
 resource "aws_cognito_user_pool_domain" "user-pool-domain" {
-  domain       = "ikigailabs"
+  domain       = var.user_pool_domain
   user_pool_id = aws_cognito_user_pool.user-pool.id
 }
 
 resource "aws_cognito_user_pool_client" "user-pool-client" {
-  name                                          = "ikigailabs"
+  name                                          = var.user_pool_client_name
   user_pool_id                                  = aws_cognito_user_pool.user-pool.id
 
   access_token_validity                         = var.access_token_validity
