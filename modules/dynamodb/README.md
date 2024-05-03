@@ -55,6 +55,8 @@ It is possible to further customize the deployment using the variables listed be
 
 ## Outputs
 
+These values will be placed into the environment files in the Ikigai Helm chart during the microservices setup.
+
 | Name | Description |
 |------|-------------|
 | remote_jobs_table_name | Name of the DynamoDB table for storing remote pipeline runs information |

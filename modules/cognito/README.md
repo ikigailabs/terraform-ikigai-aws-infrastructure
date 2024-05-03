@@ -47,6 +47,8 @@ It is possible to further customize the deployment using the variables listed be
 
 ## Outputs
 
+These values will be placed into the environment files in the Ikigai Helm chart during the microservices setup.
+
 | Name | Description |
 |------|-------------|
 | external\_auth\_domain_name | Cognito domain of the form `https://[var.user_pool_domain].auth.[var.aws_region].amazoncognito.com` |
