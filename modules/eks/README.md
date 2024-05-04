@@ -4,14 +4,14 @@ This module deploys the AWS Elastic Kubernetes Service infrastructure required f
 
 ## Usage
 
-To use the EKS module the ids of a VPC and two of its private subnets are needed as input. This can be done using the outputs of the Ikigai VPC module, or by creating data sources that link to an existing vpc and subnets.
+To use the EKS module, the ids of a VPC and two of its private subnets are needed as input. This can be done using the outputs of the Ikigai VPC module, or by creating data sources that link to an existing vpc and subnets.
 
 This is an example using the EKS module with the Ikigai VPC module outputs.
 
 ```hcl
 module "aws-infrastructure_vpc" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/vpc"
-  version = "0.0.4"
+  version = "~> 0.0"
   
   aws_region = "us-east-2"
   availability_zone_1 = "us-east-2a"
@@ -20,7 +20,7 @@ module "aws-infrastructure_vpc" {
 
 module "aws-infrastructure_eks" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/eks"
-  version = "0.0.4"
+  version = "~> 0.0"
   
   aws_region = module.aws-infrastructure_vpc.vpc_region
   vpc_id = module.aws-infrastructure_vpc.vpc_id
@@ -96,7 +96,6 @@ It is possible to further customize the deployment using the variables listed be
 | service_ng_min_size | The minimum size of the service node group | `number` | `5` | no |
 | service_ng_name | Name of the pipeline node group | `string` | `"service-nodegroup"` | no |
 | use_node_instance_role | Flag to determine if node group will have an custom IAM role | `bool` | `true` | no |
-
 
 ## Outputs
 

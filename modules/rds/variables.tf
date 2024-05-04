@@ -3,11 +3,6 @@ variable "aws_region" {
   type        = string
 }
 
-variable "vpc_id" {
-  description = "ID of the VPC that the EKS cluster will live in"
-  type        = string
-}
-
 variable "rds_subnet_1_id" {
   description = "ID of the first rds VPC subnet"
   type        = string
