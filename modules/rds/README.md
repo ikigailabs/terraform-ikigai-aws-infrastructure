@@ -63,7 +63,7 @@ data "aws_subnet" "rds_subnet_1" {
   cidr_block = "16.0.3.0/24"
   vpc_id = data.aws_vpc.existing_vpc.id
   tags = {
-    "Name" = "rds-1"
+    "Name" = "rds-subnet-1"
   }
 }
 
@@ -71,7 +71,7 @@ data "aws_subnet" "rds_subnet_2" {
   cidr_block = "16.0.4.0/24"
   vpc_id = data.aws_vpc.existing_vpc.id
   tags = {
-    "Name" = "rds-1"
+    "Name" = "rds-subnet-2"
   }
 }
 
@@ -82,7 +82,7 @@ data "aws_security_group" "vpc_security_group" {
 }
 
 data "aws_security_group" "vpn_security_group" {
-  name = "existing-vpc-security-group"
+  name = "existing-vpn-security-group"
   vpc_id = data.aws_vpc.uae_vpc.id
 }
 

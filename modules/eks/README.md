@@ -79,9 +79,9 @@ It is possible to further customize the deployment using the variables listed be
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | aws_region | The AWS region that the EKS infrastructure will be deployed in | `string` | n/a | yes |
-| private_subnet_1_id | Id of the first of two private subnets - provided by the Ikigai VPC module outputs or by a data source | `string` | n/a | yes |
-| private_subnet_2_id | Id of the second of two private subnets - provided by the Ikigai VPC module outputs or by a data source | `string` | n/a | yes |
-| vpc_id | Id of the VPC that the EKS deployment will exist in - provided by the Ikigai VPC module outputs or by a data source | `string` | n/a | yes |
+| private_subnet_1_id | Id of the first of two private subnets | `string` | n/a | yes |
+| private_subnet_2_id | Id of the second of two private subnets | `string` | n/a | yes |
+| vpc_id | Id of the VPC that the EKS deployment will exist in | `string` | n/a | yes |
 | ami_type | The AMI used for nodes in the Kubernetes cluster | `string` | `"AL2_x86_64"` | no |
 | cluster_name | Name of the EKS cluster to be created | `string` | `"ikigai-cluster"` | no |
 | kubernetes_version | The version of Kubernetes the cluster will be running |`string` | `"1.27"` | no |

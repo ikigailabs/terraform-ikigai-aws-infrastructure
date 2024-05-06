@@ -3,11 +3,6 @@ variable "aws_region" {
   description = "AWS region"
 }
 
-variable "vpc_id" {
-  description = "ID of the VPC that the EKS cluster will live in"
-  type        = string
-}
-
 variable "private_subnet_1_id" {
   description = "ID of the first private VPC subnet"
   type        = string
@@ -30,49 +25,49 @@ variable "vpn_security_group_id" {
 
 variable "component_logs_name" {
   type        = string
-  description = "name of Ikigai component logs elasticsearch instance (default: component-logs)"
+  description = "name of Ikigai component logs elasticsearch instance"
   default     = "component-logs"
 }
 
 variable "component_logs_version" {
   type        = string
-  description = "version of Ikigai component logs elasticsearch instance (default: 7.1)"
+  description = "version of Ikigai component logs elasticsearch instance"
   default     = "7.1"
 }
 
 variable "component_logs_instance_count" {
   type        = number
-  description = "number of instances for Ikigai component logs elasticsearch instance (default: 2)"
+  description = "number of instances for Ikigai component logs elasticsearch instance"
   default     = 2
 }
 
 variable "component_logs_instance_type" {
   type        = string
-  description = "instance type for Ikigai component logs elasticsearch instance (default: m5.large.elasticsearch)"
+  description = "instance type for Ikigai component logs elasticsearch instance"
   default     = "m5.large.elasticsearch"
 }
 
 variable "component_logs_master_count" {
   type        = number
-  description = "number of master instances for Ikigai component logs elasticsearch instance (default: 2)"
+  description = "number of master instances for Ikigai component logs elasticsearch instance"
   default     = 1
 }
 
 variable "component_logs_master_type" {
   type        = string
-  description = "master instance type for Ikigai component logs elasticsearch instance (default: r5.large.elasticsearch)"
+  description = "master instance type for Ikigai component logs elasticsearch instance"
   default     = "r5.large.elasticsearch"
 }
 
 variable "component_logs_warm_count" {
   type        = number
-  description = "number of warm instances for Ikigai component logs elasticsearch instance (default: 2)"
+  description = "number of warm instances for Ikigai component logs elasticsearch instance"
   default     = 2
 }
 
 variable "component_logs_warm_type" {
   type        = string
-  description = "warm instance type for Ikigai component logs elasticsearch instance (default: ultrawarm1.medium.elasticsearch)"
+  description = "warm instance type for Ikigai component logs elasticsearch instance"
   default     = "ultrawarm1.medium.elasticsearch"
 }
 
@@ -88,43 +83,43 @@ variable "component_logs_password" {
 
 variable "component_logs_ebs_volume_size" {
   type        = number
-  description = "Volume size of EBS for Ikigai component logs elasticsearch instance (default 20 GiB)"
+  description = "Volume size of EBS for Ikigai component logs elasticsearch instance"
   default     = 20
 }
 
 variable "component_logs_ebs_throughput" {
   type        = number
-  description = "Throughput of EBS for Ikigai component logs elasticsearch instance (default 125 MiB/s)"
+  description = "Throughput of EBS for Ikigai component logs elasticsearch instance"
   default     = 125
 }
 
 variable "component_logs_ebs_iops" {
   type        = number
-  description = "Baseline input/output performance of EBS for Ikigai component logs elasticsearch instance (default 3000)"
+  description = "Baseline input/output performance of EBS for Ikigai component logs elasticsearch instance"
   default     = 3000
 }
 
 variable "monitor_elasticsearch_name" {
   type        = string
-  description = "name of Ikigai monitoring elasticsearch instance (default: monitoring)"
-  default     = "component-logs"
+  description = "name of Ikigai monitoring elasticsearch instance"
+  default     = "monitoring"
 }
 
 variable "monitor_elasticsearch_version" {
   type        = string
-  description = "version of Ikigai monitoring elasticsearch instance (default: 7.1)"
+  description = "version of Ikigai monitoring elasticsearch instance"
   default     = "7.1"
 }
 
 variable "monitor_instance_count" {
   type        = number
-  description = "number of instances for Ikigai monitoring elasticsearch instance (default: 2)"
+  description = "number of instances for Ikigai monitoring elasticsearch instance"
   default     = 2
 }
 
 variable "monitor_instance_type" {
   type        = string
-  description = "instance type for Ikigai monitoring elasticsearch instance (default: m5.large.elasticsearch)"
+  description = "instance type for Ikigai monitoring elasticsearch instance"
   default     = "m5.large.elasticsearch"
 }
 
@@ -140,6 +135,6 @@ variable "monitor_password" {
 
 variable "monitor_ebs_volume_size" {
   type        = number
-  description = "Volume size of EBS for Ikigai monitoring elasticsearch instance (default 20 GiB)"
+  description = "Volume size of EBS for Ikigai monitoring elasticsearch instance"
   default     = 20
 }

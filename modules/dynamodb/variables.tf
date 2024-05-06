@@ -11,13 +11,13 @@ variable "connection_table_name" {
 
 variable "connection_table_read_capacity" {
   type        = number
-  description = "Read capacity for Ikigai connections DynamoDB table (default: 50)"
+  description = "Read capacity for Ikigai connections DynamoDB table"
   default     = 50
 }
 
 variable "connection_table_write_capacity" {
   type        = number
-  description = "Write capacity for Ikigai connections DynamoDB table (default: 2)"
+  description = "Write capacity for Ikigai connections DynamoDB table"
   default     = 2
 }
 
@@ -29,13 +29,13 @@ variable "facet_templates_table_name" {
 
 variable "facet_templates_table_read_capacity" {
   type        = number
-  description = "Read capacity for Ikigai facet templates DynamoDB table (default: 1)"
+  description = "Read capacity for Ikigai facet templates DynamoDB table"
   default     = 1
 }
 
 variable "facet_templates_table_write_capacity" {
   type        = number
-  description = "Write capacity for Ikigai facet templates DynamoDB table (default: 1)"
+  description = "Write capacity for Ikigai facet templates DynamoDB table"
   default     = 1
 }
 
@@ -47,13 +47,13 @@ variable "lock_table_name" {
 
 variable "lock_table_read_capacity" {
   type        = number
-  description = "Read capacity for Ikigai lock DynamoDB table (default: 10)"
+  description = "Read capacity for Ikigai lock DynamoDB table"
   default     = 10
 }
 
 variable "lock_table_write_capacity" {
   type        = number
-  description = "Write capacity for Ikigai lock DynamoDB table (default: 10)"
+  description = "Write capacity for Ikigai lock DynamoDB table"
   default     = 10
 }
 
@@ -65,13 +65,13 @@ variable "pypr_lock_table_name" {
 
 variable "pypr_lock_table_read_capacity" {
   type        = number
-  description = "Read capacity for Ikigai pypr lock DynamoDB table (default: 10)"
+  description = "Read capacity for Ikigai pypr lock DynamoDB table"
   default     = 10
 }
 
 variable "pypr_lock_table_write_capacity" {
   type        = number
-  description = "Write capacity for Ikigai pypr lock DynamoDB table (default: 10)"
+  description = "Write capacity for Ikigai pypr lock DynamoDB table"
   default     = 10
 }
 
@@ -83,12 +83,12 @@ variable "remote_jobs_table_name" {
 
 variable "remote_jobs_table_read_capacity" {
   type        = number
-  description = "Read capacity for Ikigai remote jobs DynamoDB table (default: 1)"
+  description = "Read capacity for Ikigai remote jobs DynamoDB table"
   default     = 1
 }
 
 variable "remote_jobs_table_write_capacity" {
   type        = number
-  description = "Write capacity for Ikigai remote jobs DynamoDB table (default: 1)"
+  description = "Write capacity for Ikigai remote jobs DynamoDB table"
   default     = 1
 }
