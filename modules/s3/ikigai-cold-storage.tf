@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "ikigai-cold-storage-prod" {
-  bucket = "ikigai-cold-storage-prod"
+  bucket = var.ikigai_cold_storage_bucket_name
 }
 
 # Set ownership controls for the bucket

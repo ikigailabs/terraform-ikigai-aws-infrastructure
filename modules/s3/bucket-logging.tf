@@ -33,7 +33,7 @@ resource "aws_s3_bucket_public_access_block" "bucket-logging-public-access-block
 # Send logs from the bucket-logging-v1-prod bucket to itself
 resource "aws_s3_bucket_logging" "bucket-logging-logging" {
   bucket        = aws_s3_bucket.bucket-logging-v1-prod.id
-  target_bucket = "bucket-logging-v1-prod"
+  target_bucket = var.ikigai_target_logs_bucket_name
   target_prefix = ""
 }
 
