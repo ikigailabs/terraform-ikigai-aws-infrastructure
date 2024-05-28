@@ -5,7 +5,7 @@ resource "aws_iam_role" "rds_monitoring_role" {
 
 resource "aws_iam_role_policy" "rds_monitoring_role_policy" {
   name = "RDSMonitoringRolePolicy"
-  role = aws_iam_policy.rds_monitoring_role.id
+  role = aws_iam_role.rds_monitoring_role.id
   policy = jsonencode(
     {
     "Version": "2012-10-17",
