@@ -50,7 +50,7 @@ variable "component_logs_instance_type" {
 variable "component_logs_master_count" {
   type        = number
   description = "number of master instances for Ikigai component logs elasticsearch instance"
-  default     = 1
+  default     = 3
 }
 
 variable "component_logs_master_type" {
