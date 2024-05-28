@@ -66,7 +66,7 @@ module "aws-infrastructure_eks" {
   version = "~> 0.0"
   
   aws_region = data.aws_region.current
-  vpc_id = data.aws_vpc.existing_vpc.id
+  vpc_id = data.aws_vpc.ikigai_vpc.id
   private_subnet_1_id = data.aws_subnet.private_subnet_1.id
   private_subnet_2_id = data.aws_subnet.private_subnet_2.id
 }
