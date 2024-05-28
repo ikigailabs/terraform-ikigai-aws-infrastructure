@@ -1,6 +1,6 @@
 resource "aws_iam_role" "node_instance_role" {
   name = "NodeInstanceIAMRole"
-  assume_role_policy = file("node_policy.json")
+  assume_role_policy = file("${path.module}/node_policy.json")
 }
 
 resource "aws_iam_role_policy" "node_instance_role_policy" {
