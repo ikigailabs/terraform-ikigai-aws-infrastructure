@@ -23,7 +23,7 @@ resource "aws_db_instance" "airbyte-prod" {
                               }
   copy_tags_to_snapshot     = true
   monitoring_interval       = var.monitoring_interval
-  monitoring_role_arn       = aws_iam_role.rds-monitoring-role.arn
+  monitoring_role_arn       = aws_iam_role.rds_monitoring_role.arn
 }
 
 resource "aws_db_instance" "dashhub-prod" {
@@ -51,7 +51,7 @@ resource "aws_db_instance" "dashhub-prod" {
                               }
   copy_tags_to_snapshot     = true
   monitoring_interval       = var.monitoring_interval
-  monitoring_role_arn       = aws_iam_role.rds-monitoring-role.arn
+  monitoring_role_arn       = aws_iam_role.rds_monitoring_role.arn
 }
 
 resource "aws_db_instance" "database-storage-prod" {
@@ -79,7 +79,7 @@ resource "aws_db_instance" "database-storage-prod" {
                               }
   copy_tags_to_snapshot     = true
   monitoring_interval       = var.monitoring_interval
-  monitoring_role_arn       = aws_iam_role.rds-monitoring-role.arn
+  monitoring_role_arn       = aws_iam_role.rds_monitoring_role.arn
 }
 
 resource "aws_db_instance" "jupyterhub-prod" {
@@ -107,7 +107,7 @@ resource "aws_db_instance" "jupyterhub-prod" {
                               }
   copy_tags_to_snapshot     = true
   monitoring_interval       = var.monitoring_interval
-  monitoring_role_arn       = aws_iam_role.rds-monitoring-role.arn
+  monitoring_role_arn       = aws_iam_role.rds_monitoring_role.arn
 }
 
 resource "aws_db_instance" "pipeline-staging-prod" {
@@ -135,7 +135,7 @@ resource "aws_db_instance" "pipeline-staging-prod" {
                               }
   copy_tags_to_snapshot     = true
   monitoring_interval       = var.monitoring_interval
-  monitoring_role_arn       = aws_iam_role.rds-monitoring-role.arn
+  monitoring_role_arn       = aws_iam_role.rds_monitoring_role.arn
 }
 
 resource "aws_db_instance" "service-metadata-prod" {
@@ -163,7 +163,7 @@ resource "aws_db_instance" "service-metadata-prod" {
                               }
   copy_tags_to_snapshot     = true
   monitoring_interval       = var.monitoring_interval
-  monitoring_role_arn       = aws_iam_role.rds-monitoring-role.arn
+  monitoring_role_arn       = aws_iam_role.rds_monitoring_role.arn
 }
 
 resource "aws_db_instance" "superset-prod" {
@@ -191,5 +191,5 @@ resource "aws_db_instance" "superset-prod" {
                               }
   copy_tags_to_snapshot     = true
   monitoring_interval       = var.monitoring_interval
-  monitoring_role_arn       = aws_iam_role.rds-monitoring-role.arn
+  monitoring_role_arn       = aws_iam_role.rds_monitoring_role.arn
 }
