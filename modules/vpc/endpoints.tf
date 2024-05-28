@@ -88,7 +88,7 @@ resource "aws_vpc_endpoint" "autoscaling" {
 
 resource "aws_vpc_endpoint" "ecs" {
   vpc_id       = aws_vpc.prod.id
-  service_name = "com.amazonaws.us-east-2.ecs"
+  service_name = "com.amazonaws.${var.aws_region}.ecs"
   vpc_endpoint_type = "Interface"
 
     security_group_ids = [
@@ -99,7 +99,7 @@ resource "aws_vpc_endpoint" "ecs" {
 
 resource "aws_vpc_endpoint" "dynamodb" {
   vpc_id       = aws_vpc.prod.id
-  service_name = "com.amazonaws.us-east-2.dynamodb"
+  service_name = "com.amazonaws.${var.aws_region}.dynamodb"
   vpc_endpoint_type = "Gateway"
 }
 
