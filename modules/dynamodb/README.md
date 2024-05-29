@@ -4,33 +4,19 @@ This module allows you to create the AWS DynamoDB infrastructure necessary for a
 
 ## Usage
 
-A simple usage example of the Ikigai DynamoDB module, only setting the required variables, would be:
+A simple usage example of the Ikigai DynamoDB module, only setting the required inputs, would be:
 
 ```hcl
 module "aws-infrastructure_dynamodb" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/dynamodb"
-  version = "~> 0.0"
+  version = "~> 1.0"
   
-  aws_region = "us-east-2"
+  aws_region = module.aws-infrastructure_vpc.vpc_region
 }
 ```
 
-A usage of the module that changes the name of the connections DynamoDB table, as well as its read and write capacity, would be:
-
-```hcl
-module "aws-infrastructure_dynamodb" {
-  source  = "ikigailabs/aws-infrastructure/ikigai//modules/dynamodb"
-  version = "~> 0.0"
-  
-  aws_region = "us-east-2"
-
-  connection_table_name = "new-table-name"
-  connection_table_read_capacity = 1
-  connection_table_write_capacity = 1
-}
-```
-
-It is possible to further customize the deployment using the variables listed below.
+It is possible to further customize the deployment using the inputs listed below. To do so, add `[input name] = target_value` within the module braces.
+For example, to set the `connection_table_read_capacity` input to `5`, add `connection_table_read_capacity = 5` to the module block. Remember to add double quotes for string inputs! 
 
 ## Inputs
 

@@ -6,14 +6,14 @@ This module deploys the AWS Relational Database Service (RDS) infrastructure req
 
 To use the RDS module, the ids of two rds subnets as well as the VPC's security groups are needed as input. Pass them in using data sources that link to existing subnets and security groups.
 
-This is an example using the RDS module with an existing VPC and subnets
+This is a simple example usage of the RDS module, only setting the required inputs:
 
 ```hcl
 module "aws-infrastructure_rds" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/rds"
-  version = "~> 0.0"
+  version = "~> 1.0"
   
-  aws_region = data.aws_region.current
+  aws_region = module.aws-infrastructure_vpc.vpc_region
   vpc_security_group_id = data.aws_security_group.vpc_security_group.id
   vpn_security_group_id = data.aws_security_group.vpn_security_group.id
   rds_subnet_1_id = data.aws_subnet.rds_subnet_1.id
@@ -35,7 +35,7 @@ module "aws-infrastructure_rds" {
 }
 ```
 
-It is possible to further customize the RDS deployment using the variables listed below.  To do so, add `[input name] = target_value` within the module braces.
+It is possible to further customize the RDS deployment using the inputs listed below.  To do so, add `[input name] = target_value` within the module braces.
 For example, to set the `airbyte_server_name` input to `airbyte`, add `airbyte_server_name = "airbyte"` to the module block. Remember to add double quotes for string inputs! 
 
 ## Inputs

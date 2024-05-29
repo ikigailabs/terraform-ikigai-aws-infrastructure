@@ -1,28 +1,29 @@
 # Ikigai Cognito Terraform Module
 
 This module allows you to create the AWS Cognito infrastructure for an Ikigai application setup.
-Cognito is not a necessary resource, as you can (explain passthrough auth here)
+Cognito is not a necessary resource, as you can enable passthrough authentication at a later stage of the Ikigai setup.
 
 ## Usage
 
-A simple usage example of the Ikigai Cognito module, only setting the required variables, would be:
+A simple usage example of the Ikigai Cognito module, only setting the required inputs, would be:
 
 ```hcl
 module "aws-infrastructure_cognito" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/cognito"
-  version = "~> 0.0"
+  version = "~> 1.0"
   
   aws_region = "us-east-2"
-  base_hostname = "example_domain.ikigailabs.io"
+  base_hostname = "domain.com"
   google_client_id = "example-google-client-id"
   google_client_secret = "example-google-client-secret"
   user_pool_client_name = "user-pool-client"
   user_pool_domain_name = "user-pool-domain"
-  welcome_email_address = "welcome@ikigailabs.io"
+  welcome_email_address = "welcome@domain.com"
 }
 ```
 
-It is possible to further customize the deployment using the variables listed below.
+It is possible to further customize the deployment using the inputs listed below. To do so, add `[input name] = target_value` within the module braces.
+For example, to set the `password_minimum_length` input to `2`, add `password_minimum_length = 2` to the module block. Remember to add double quotes for string inputs! 
 
 ## Inputs
 

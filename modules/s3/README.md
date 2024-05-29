@@ -9,9 +9,9 @@ A simple usage example of the Ikigai S3 module, only setting the required inputs
 ```hcl
 module "aws-infrastructure_s3" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/s3"
-  version = "0.0.4"
+  version = "~> 1.0"
   
-  aws_region = "us-east-2"
+  aws_region = module.aws-infrastructure_vpc.vpc_region
 }
 ```
 

@@ -1,99 +1,32 @@
 # Ikigai Elasticsearch Terraform Module
 
-This module deploys the AWS Elasticsearchh infrastructure required for an Ikigai application setup.
+This module deploys the AWS Elasticsearch infrastructure required for an Ikigai application setup.
 
 ## Usage
 
-To use the Elasticsearch module, the ids of two private subnets as well as the VPC's security groups are needed as input. This can be done using the outputs of the Ikigai VPC module, or by creating data sources that link to existing subnets and security groups.
+To use the Elasticsearch module, the ids of two private subnets as well as the VPC's security groups are needed as input. Pass them in using data sources that link to existing subnets and security groups.
 
-This is an example using the Elasticsearch module with the Ikigai VPC module outputs.
-
-```hcl
-module "aws-infrastructure_vpc" {
-  source  = "ikigailabs/aws-infrastructure/ikigai//modules/vpc"
-  version = "~> 0.0"
-  
-  aws_region = "us-east-2"
-  availability_zone_1 = "us-east-2a"
-  availability_zone_2 = "us-east-2b"
-}
-
-module "aws-infrastructure_elasticsearch" {
-  source  = "ikigailabs/aws-infrastructure/ikigai//modules/elasticsearch"
-  version = "~> 0.0"
-  
-  aws_region = "us-east-2"
-  private_subnet_1_id = module.aws-infrastructure_vpc.private_subnet_1_id
-  private_subnet_2_id = module.aws-infrastructure_vpc.private_subnet_2_id
-  vpc_security_group_id = module.aws-infrastructure_vpc.vpc_security_group_id
-  vpn_security_group_id = module.aws-infrastructure_vpc.vpn_security_group_id
-  component_logs_password = "pA5Sw0rd"
-  component_logs_username = "example-username"
-  monitor_password = "pA5Sw0rd"
-  monitor_username = "example-username"
-}
-```
-
-This is an example using the RDS module with an existing VPC and subnets
+This is a simple example usage of the Elasticsearch module, only setting the required inputs:
 
 ```hcl
-# Get current region
-data "aws_region" "current" {}
-
-# Get information of the existing VPC using its CIDR and tags
-data "aws_vpc" "existing_vpc" {
-  cidr_block = "16.0.0.0/16"
-  tags = {
-    "Name" = "existing-vpc"
-  }
-}
-
-# Get information of the private subnets in the VPC using its CIDR block or any tags it has
-data "aws_subnet" "private_subnet_1" {
-  cidr_block = "16.0.32.0/24"
-  vpc_id = data.aws_vpc.existing_vpc.id
-  tags = {
-    "Name" = "private-subnet-1"
-  }
-}
-
-data "aws_subnet" "private_subnet_2" {
-  cidr_block = "16.0.64.0/24"
-  vpc_id = data.aws_vpc.existing_vpc.id
-  tags = {
-    "Name" = "private-subnet-2"
-  }
-}
-
-# Get information of the vpc and vpn security groups using its name
-data "aws_security_group" "vpc_security_group" {
-  name = "existing-vpc-security-group"
-  vpc_id = data.aws_vpc.uae_vpc.id
-}
-
-data "aws_security_group" "vpn_security_group" {
-  name = "existing-vpn-security-group"
-  vpc_id = data.aws_vpc.uae_vpc.id
-}
-
-# Create the Elasticsearch infrastructure
 module "aws-infrastructure_elasticsearch" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/elasticsearch"
-  version = "~> 0.0"
+  version = "~> 1.0"
   
-  aws_region = "us-east-2"
+  aws_region = module.aws-infrastructure_vpc.vpc_region
   private_subnet_1_id = data.aws_subnet.private_subnet_1.id
   private_subnet_2_id = data.aws_subnet.private_subnet_2.id
   vpc_security_group_id = data.aws_security_group.vpc_security_group.id
   vpn_security_group_id = data.aws_security_group.vpn_security_group.id
-  component_logs_password = "pA5Sw0rd"
-  component_logs_username = "example-username"
-  monitor_password = "pA5Sw0rd"
-  monitor_username = "example-username"
+  component_logs_password = "REQUIRED_PASSWORD"
+  component_logs_username = "REQUIRED_USERNAME"
+  monitor_password = "REQUIRED_PASSWORD"
+  monitor_username = "REQUIRED_USERNAME"
 }
 ```
 
-It is possible to further customize the RDS deployment using the variables listed below.
+It is possible to further customize the RDS deployment using the inputs listed below. To do so, add `[input name] = target_value` within the module braces.
+For example, to set the `component_logs_instance_count` input to `2`, add `component_logs_instance_count = 2` to the module block. Remember to add double quotes for string inputs! 
 
 ## Inputs
 
@@ -113,7 +46,7 @@ It is possible to further customize the RDS deployment using the variables liste
 | component_logs_ebs_volume_size | Size of EBS volumes attached to data nodes for the component logs Elasticsearch cluster | `number` | `20` | no |
 | component_logs_instance_count | Number of instances in the component logs Elasticsearch cluster | `number` | `2` | no |
 | component_logs_instance_type | Instance type of data nodes in the component logs Elasticsearch cluster | `string` | `"m5.large.elasticsearch"` | no |
-| component_logs_master_count | Number of dedicated main nodes in the component logs Elasticsearch cluster | `number` | `1` | no |
+| component_logs_master_count | Number of dedicated main nodes in the component logs Elasticsearch cluster | `number` | `3` | no |
 | component_logs_master_type | Instance type of the dedicated main nodes in the component logs Elasticsearch cluster | `string` | `"r5.large.elasticsearch"` | no |
 | component_logs_name | Name of the component logs Elasticsearch cluster | `string` | `"component-logs"` | no |
 | component_logs_version | Version of Elasticsearch to deploy for the component logs Elasticsearch cluster | `string` | `"7.1"` | no |

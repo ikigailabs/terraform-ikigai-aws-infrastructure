@@ -4,75 +4,24 @@ This module deploys the AWS Elastic Kubernetes Service infrastructure required f
 
 ## Usage
 
-To use the EKS module, the ids of a VPC and two of its private subnets are needed as input. This can be done using the outputs of the Ikigai VPC module, or by creating data sources that link to an existing vpc and subnets.
+To use the EKS module, the ids of a VPC and two of its private subnets are needed as input. Pass them in using data sources that link to the existing vpc and its subnets.
 
-This is an example using the EKS module with the Ikigai VPC module outputs.
+This is a simple example usage of the EKS module, only setting the required inputs:
 
 ```hcl
-module "aws-infrastructure_vpc" {
-  source  = "ikigailabs/aws-infrastructure/ikigai//modules/vpc"
-  version = "~> 0.0"
-  
-  aws_region = "us-east-2"
-  availability_zone_1 = "us-east-2a"
-  availability_zone_2 = "us-east-2b"
-}
-
 module "aws-infrastructure_eks" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/eks"
-  version = "~> 0.0"
+  version = "~> 1.0"
   
   aws_region = module.aws-infrastructure_vpc.vpc_region
-  vpc_id = module.aws-infrastructure_vpc.vpc_id
-  private_subnet_1_id = module.aws-infrastructure_vpc.private_subnet_1_id
-  private_subnet_2_id = module.aws-infrastructure_vpc.private_subnet_2_id
-}
-```
-
-This is an example using the EKS module with an existing VPC and subnets
-
-```hcl
-# Get current region
-data "aws_region" "current" {}
-
-# Get information of the existing VPC using its CIDR and tags
-data "aws_vpc" "existing_vpc" {
-  cidr_block = "16.0.0.0/16"
-  tags = {
-    "Name" = "existing-vpc"
-  }
-}
-
-# Get information of the private subnets in the VPC using its CIDR block or any tags it has
-data "aws_subnet" "private_subnet_1" {
-  cidr_block = "16.0.32.0/19"
-  vpc_id = data.aws_vpc.existing_vpc.id
-  tags = {
-    "Name" = "private-subnet-1"
-  }
-}
-
-data "aws_subnet" "private_subnet_2" {
-  cidr_block = "16.0.64.0/19"
-  vpc_id = data.aws_vpc.existing_vpc.id
-  tags = {
-    "Name" = "private-subnet-2"
-  }
-}
-
-# Create the EKS infrastructure
-module "aws-infrastructure_eks" {
-  source  = "ikigailabs/aws-infrastructure/ikigai//modules/eks"
-  version = "~> 0.0"
-  
-  aws_region = data.aws_region.current
   vpc_id = data.aws_vpc.ikigai_vpc.id
   private_subnet_1_id = data.aws_subnet.private_subnet_1.id
   private_subnet_2_id = data.aws_subnet.private_subnet_2.id
 }
 ```
 
-It is possible to further customize the deployment using the variables listed below.
+It is possible to further customize the deployment using the inputs listed below. To do so, add `[input name] = target_value` within the module braces.
+For example, to set the `cluster_name` input to `my-cluster`, add `cluster_name = "my-cluster"` to the module block. Remember to add double quotes for string inputs! 
 
 ## Inputs
 
