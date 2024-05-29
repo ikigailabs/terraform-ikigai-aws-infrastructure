@@ -4,7 +4,7 @@ This module allows you to create the AWS Virtual Private Cloud infrastructure ne
 
 ## Usage
 
-A simple usage example of the Ikigai DynamoDB module, only setting the required inputs, would be:
+A simple usage example of the Ikigai VPC module, only setting the required inputs, would be:
 
 ```hcl
 module "aws-infrastructure_vpc" {
