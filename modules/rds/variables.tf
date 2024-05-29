@@ -215,7 +215,7 @@ variable "service_metadata_server_storage" {
 variable "service_metadata_server_instance" {
   description = "the hardware associated with the service_metadata server"
   type        = string
-  default     = "db.t2.small"
+  default     = "db.m5.large"
 }
 
 variable "service_metadata_username" {
