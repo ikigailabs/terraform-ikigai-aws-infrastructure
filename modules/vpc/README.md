@@ -4,7 +4,7 @@ This module allows you to create the AWS Virtual Private Cloud infrastructure ne
 
 ## Usage
 
-A simple usage example of the Ikigai DynamoDB module, only setting the required variables, would be:
+A simple usage example of the Ikigai DynamoDB module, only setting the required inputs, would be:
 
 ```hcl
 module "aws-infrastructure_vpc" {
@@ -17,7 +17,8 @@ module "aws-infrastructure_vpc" {
 }
 ```
 
-It is possible to further customize the deployment using the variables listed below.
+It is possible to further customize the deployment using the inputs listed below. To do so, add `[input name] = target_value` within the module braces.
+For example, to set the `vpc_name` input to `my_vpc`, add `vpc_name = "my_vpc"` to the module block. Remember to add double quotes for string inputs! 
 
 ## Inputs
 
@@ -50,15 +51,6 @@ It is possible to further customize the deployment using the variables listed be
 
 ## Outputs
 
-These outputs will serve as inputs for other Ikigai modules that need a VPC, namely, the EKS, Elasticsearch, and RDS modules.
-
 | Name | Description |
 |------|-------------|
-| private_subnet_1_id | Id of the first of two private subnets |
-| private_subnet_2_id | Id of the second of two private subnets |
-| rds_subnet_1_id | Id of the first of two RDS subnets |
-| rds_subnet_2_id | Id of the second of two RDS subnets |
-| vpc_id | Id of the VPC |
 | vpc_region | The AWS region that the VPC infrastructure was deployed in |
-| vpc_security_group_id | Id of the security group for allowing intra-VPC traffic |
-| vpn_security_group_id | Id of the security group for allowing traffic through the VPN |

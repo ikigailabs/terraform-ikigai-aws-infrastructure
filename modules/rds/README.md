@@ -4,89 +4,11 @@ This module deploys the AWS Relational Database Service (RDS) infrastructure req
 
 ## Usage
 
-To use the RDS module, the ids of two rds subnets as well as the VPC's security groups are needed as input. This can be done using the outputs of the Ikigai VPC module, or by creating data sources that link to existing subnets and security groups.
-
-This is an example using the RDS module with the Ikigai VPC module outputs.
-
-```hcl
-module "aws-infrastructure_vpc" {
-  source  = "ikigailabs/aws-infrastructure/ikigai//modules/vpc"
-  version = "~> 0.0"
-  
-  aws_region = "us-east-2"
-  availability_zone_1 = "us-east-2a"
-  availability_zone_2 = "us-east-2b"
-}
-
-module "aws-infrastructure_rds" {
-  source  = "ikigailabs/aws-infrastructure/ikigai//modules/rds"
-  version = "~> 0.0"
-  
-  aws_region = "us-east-2"
-  vpc_security_group_id = module.aws-infrastructure_vpc.vpc_security_group_id
-  vpn_security_group_id = module.aws-infrastructure_vpc.vpn_security_group_id
-  rds_subnet_1_id = module.aws-infrastructure_vpc.rds_subnet_1_id
-  rds_subnet_2_id = module.aws-infrastructure_vpc.rds_subnet_2_id
-  airbyte_password = "pA5Sw0rd"
-  airbyte_username = "example-username"
-  dashhub_password = "pA5Sw0rd"
-  dashhub_username = "example-username"
-  database_password = "pA5Sw0rd"
-  database_username = "example-username"
-  jupyterhub_password = "pA5Sw0rd"
-  jupyterhub_username = "example-username"
-  pipeline_password = "pA5Sw0rd"
-  pipeline_username = "example-username"
-  service_metadata_password = "pA5Sw0rd"
-  service_metadata_username = "example-username"
-  superset_password = "pA5Sw0rd"
-  superset_username = "example-username"
-}
-```
+To use the RDS module, the ids of two rds subnets as well as the VPC's security groups are needed as input. Pass them in using data sources that link to existing subnets and security groups.
 
 This is an example using the RDS module with an existing VPC and subnets
 
 ```hcl
-# Get current region
-data "aws_region" "current" {}
-
-# Get information of the existing VPC using its CIDR and tags
-data "aws_vpc" "existing_vpc" {
-  cidr_block = "16.0.0.0/16"
-  tags = {
-    "Name" = "existing-vpc"
-  }
-}
-
-# Get information of the rds subnets in the VPC using its CIDR block or any tags it has
-data "aws_subnet" "rds_subnet_1" {
-  cidr_block = "16.0.3.0/24"
-  vpc_id = data.aws_vpc.existing_vpc.id
-  tags = {
-    "Name" = "rds-subnet-1"
-  }
-}
-
-data "aws_subnet" "rds_subnet_2" {
-  cidr_block = "16.0.4.0/24"
-  vpc_id = data.aws_vpc.existing_vpc.id
-  tags = {
-    "Name" = "rds-subnet-2"
-  }
-}
-
-# Get information of the vpc and vpn security groups using its name
-data "aws_security_group" "vpc_security_group" {
-  name = "existing-vpc-security-group"
-  vpc_id = data.aws_vpc.uae_vpc.id
-}
-
-data "aws_security_group" "vpn_security_group" {
-  name = "existing-vpn-security-group"
-  vpc_id = data.aws_vpc.uae_vpc.id
-}
-
-# Create the RDS infrastructure
 module "aws-infrastructure_rds" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/rds"
   version = "~> 0.0"
@@ -96,24 +18,25 @@ module "aws-infrastructure_rds" {
   vpn_security_group_id = data.aws_security_group.vpn_security_group.id
   rds_subnet_1_id = data.aws_subnet.rds_subnet_1.id
   rds_subnet_2_id = data.aws_subnet.rds_subnet_2.id
-  airbyte_password = "pA5Sw0rd"
-  airbyte_username = "example-username"
-  dashhub_password = "pA5Sw0rd"
-  dashhub_username = "example-username"
-  database_password = "pA5Sw0rd"
-  database_username = "example-username"
-  jupyterhub_password = "pA5Sw0rd"
-  jupyterhub_username = "example-username"
-  pipeline_password = "pA5Sw0rd"
-  pipeline_username = "example-username"
-  service_metadata_password = "pA5Sw0rd"
-  service_metadata_username = "example-username"
-  superset_password = "pA5Sw0rd"
-  superset_username = "example-username"
+  airbyte_password = "REQUIRED_PASSWORD"
+  airbyte_username = "REQUIRED_USERNAME"
+  dashhub_password = "REQUIRED_PASSWORD"
+  dashhub_username = "REQUIRED_USERNAME"
+  database_password = "REQUIRED_PASSWORD"
+  database_username = "REQUIRED_USERNAME"
+  jupyterhub_password = "REQUIRED_PASSWORD"
+  jupyterhub_username = "REQUIRED_USERNAME"
+  pipeline_password = "REQUIRED_PASSWORD"
+  pipeline_username = "REQUIRED_USERNAME"
+  service_metadata_password = "REQUIRED_PASSWORD"
+  service_metadata_username = "REQUIRED_USERNAME"
+  superset_password = "REQUIRED_PASSWORD"
+  superset_username = "REQUIRED_USERNAME"
 }
 ```
 
-It is possible to further customize the RDS deployment using the variables listed below.
+It is possible to further customize the RDS deployment using the variables listed below.  To do so, add `[input name] = target_value` within the module braces.
+For example, to set the `airbyte_server_name` input to `airbyte`, add `airbyte_server_name = "airbyte"` to the module block. Remember to add double quotes for string inputs! 
 
 ## Inputs
 

@@ -4,7 +4,7 @@ This module allows you to create the AWS S3 infrastructure necessary for an Ikig
 
 ## Usage
 
-A simple usage example of the Ikigai S3 module, only setting the required variables, would be:
+A simple usage example of the Ikigai S3 module, only setting the required inputs, would be:
 
 ```hcl
 module "aws-infrastructure_s3" {
@@ -15,7 +15,8 @@ module "aws-infrastructure_s3" {
 }
 ```
 
-It is possible to further customize the deployment using the variables listed below.
+It is possible to further customize the deployment using the inputs listed below. To do so, add `[input name] = target_value` within the module braces.
+For example, to set the `ikigai_dataset_bucket_name` input to `dataset_bucket`, add `ikigai_dataset_bucket_name = "dataset_bucket"` to the module block. Remember to add double quotes for string inputs! 
 
 ## Inputs
 
