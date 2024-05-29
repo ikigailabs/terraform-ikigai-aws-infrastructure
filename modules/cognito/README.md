@@ -12,7 +12,7 @@ module "aws-infrastructure_cognito" {
   source  = "ikigailabs/aws-infrastructure/ikigai//modules/cognito"
   version = "~> 1.0"
   
-  aws_region = "us-east-2"
+  aws_region = module.aws-infrastructure_vpc.vpc_region
   base_hostname = "domain.com"
   google_client_id = "example-google-client-id"
   google_client_secret = "example-google-client-secret"
