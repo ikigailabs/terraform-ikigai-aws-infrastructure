@@ -12,7 +12,7 @@ module "eks" {
 
   vpc_id                         = var.vpc_id
   subnet_ids                     = [var.private_subnet_1_id, var.private_subnet_2_id]
-  cluster_endpoint_public_access = false
+  cluster_endpoint_public_access = true
 
   eks_managed_node_group_defaults = {
     ami_type = var.ami_type
