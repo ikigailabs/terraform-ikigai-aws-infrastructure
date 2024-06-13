@@ -19,38 +19,6 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    pipeline = {
-      name = var.pipeline_ng_name
-
-      labels = {
-        role = "pipeline"
-      }
-
-      instance_types = [var.pipeline_ng_instance_type]
-
-      min_size     = var.pipeline_ng_min_size
-      max_size     = var.pipeline_ng_max_size
-      desired_size = var.pipeline_ng_desired_size
-
-      iam_instance_profile_name = var.use_node_instance_role ? [aws_iam_role.node_instance_role.name] : []
-    }
-
-    service = {
-      name = var.service_ng_name
-
-      labels = {
-        role = "service"
-      }
-
-      instance_types = [var.service_ng_instance_type]
-
-      min_size     = var.service_ng_min_size
-      max_size     = var.service_ng_max_size
-      desired_size = var.service_ng_desired_size
-
-      iam_instance_profile_name = var.use_node_instance_role ? [aws_iam_role.node_instance_role.name] : []
-    }
-
     pipeline_node_group = {
       name = var.pipeline_ng_name
 
