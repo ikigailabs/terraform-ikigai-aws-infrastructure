@@ -67,6 +67,10 @@ module "eks" {
       }
 
       iam_instance_profile_name = var.use_node_instance_role ? [aws_iam_role.node_instance_role.name] : []
+
+      tags = {
+        role = "pipeline"
+      }
     }
 
     service_node_group = {
@@ -81,10 +85,14 @@ module "eks" {
       disk_size = var.service_ng_disk_size
 
       labels = {
-        role = "pipeline"
+        role = "service"
       }
 
       iam_instance_profile_name = var.use_node_instance_role ? [aws_iam_role.node_instance_role.name] : []
+
+      tags = {
+        role = "service"
+      }
     }
   }
 }
