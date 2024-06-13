@@ -66,6 +66,12 @@ variable "pipeline_ng_instance_type" {
   default     = "r5.4xlarge"
 }
 
+variable "pipeline_ng_disk_size" {
+  description = "The disk size of the pipeline node group (in GiB)"
+  type        = number
+  default     = 200
+}
+
 variable "service_ng_name" {
   description = "Name of the pipeline node group"
   type        = string
@@ -94,6 +100,12 @@ variable "service_ng_instance_type" {
   description = "The instance type of the service node group"
   type        = string
   default     = "c5.12xlarge"
+}
+
+variable "service_ng_disk_size" {
+  description = "The disk size of the service node group (in GiB)"
+  type        = number
+  default     = 200
 }
 
 variable "use_node_instance_role" {
