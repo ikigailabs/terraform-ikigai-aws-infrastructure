@@ -108,6 +108,42 @@ variable "service_ng_disk_size" {
   default     = 200
 }
 
+variable "dremio_ng_name" {
+  description = "Name of the pipeline node group"
+  type        = string
+  default     = "dremio-nodegroup"
+}
+
+variable "dremio_ng_min_size" {
+  description = "The minimum size of the dremio node group"
+  type        = number
+  default     = 4
+}
+
+variable "dremio_ng_max_size" {
+  description = "The maximum size of the dremio node group"
+  type        = number
+  default     = 4
+}
+
+variable "dremio_ng_desired_size" {
+  description = "The desired size of the dremio node group"
+  type        = number
+  default     = 4
+}
+
+variable "dremio_ng_instance_type" {
+  description = "The instance type of the dremio node group"
+  type        = string
+  default     = "r5d.4xlarge"
+}
+
+variable "dremio_ng_disk_size" {
+  description = "The disk size of the dremio node group (in GiB)"
+  type        = number
+  default     = 200
+}
+
 variable "use_node_instance_role" {
   description = "Flag to determine if node group will have an custom IAM role"
   type        = bool
