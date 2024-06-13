@@ -72,8 +72,38 @@ variable "pipeline_ng_disk_size" {
   default     = 200
 }
 
+variable "pipeline_ng_volume_type" {
+  description = "The ebs volume type of the pipeline node group"
+  type        = string
+  default     = "gp3"
+}
+
+variable "pipeline_ng_ebs_iops" {
+  description = "The ebs iops of the pipeline node group"
+  type        = number
+  default     = 3000
+}
+
+variable "pipeline_ng_ebs_throughput" {
+  description = "The ebs throughput of the pipeline node group"
+  type        = number
+  default     = 125
+}
+
+variable "pipeline_ng_ebs_encrypted" {
+  description = "Whether ebs storage of the pipeline node group is encrypted"
+  type        = bool
+  default     = true
+}
+
+variable "pipeline_ng_ebs_delete_on_termination" {
+  description = "Whether ebs storage of the pipeline node group is deleted on termination"
+  type        = bool
+  default     = true
+}
+
 variable "service_ng_name" {
-  description = "Name of the pipeline node group"
+  description = "Name of the service node group"
   type        = string
   default     = "service-nodegroup"
 }
@@ -108,8 +138,38 @@ variable "service_ng_disk_size" {
   default     = 200
 }
 
+variable "service_ng_volume_type" {
+  description = "The ebs volume type of the service node group"
+  type        = string
+  default     = "gp3"
+}
+
+variable "service_ng_ebs_iops" {
+  description = "The ebs iops of the service node group"
+  type        = number
+  default     = 3000
+}
+
+variable "service_ng_ebs_throughput" {
+  description = "The ebs throughput of the service node group"
+  type        = number
+  default     = 125
+}
+
+variable "service_ng_ebs_encrypted" {
+  description = "Whether ebs storage of the service node group is encrypted"
+  type        = bool
+  default     = true
+}
+
+variable "service_ng_ebs_delete_on_termination" {
+  description = "Whether ebs storage of the service node group is deleted on termination"
+  type        = bool
+  default     = true
+}
+
 variable "dremio_ng_name" {
-  description = "Name of the pipeline node group"
+  description = "Name of the dremio node group"
   type        = string
   default     = "dremio-nodegroup"
 }
@@ -142,6 +202,36 @@ variable "dremio_ng_disk_size" {
   description = "The disk size of the dremio node group (in GiB)"
   type        = number
   default     = 200
+}
+
+variable "dremio_ng_volume_type" {
+  description = "The ebs volume type of the dremio node group"
+  type        = string
+  default     = "gp3"
+}
+
+variable "dremio_ng_ebs_iops" {
+  description = "The ebs iops of the dremio node group"
+  type        = number
+  default     = 3000
+}
+
+variable "dremio_ng_ebs_throughput" {
+  description = "The ebs throughput of the dremio node group"
+  type        = number
+  default     = 125
+}
+
+variable "dremio_ng_ebs_encrypted" {
+  description = "Whether ebs storage of the dremio node group is encrypted"
+  type        = bool
+  default     = true
+}
+
+variable "dremio_ng_ebs_delete_on_termination" {
+  description = "Whether ebs storage of the dremio node group is deleted on termination"
+  type        = bool
+  default     = true
 }
 
 variable "use_node_instance_role" {

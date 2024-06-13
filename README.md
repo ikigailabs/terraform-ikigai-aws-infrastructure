@@ -1,5 +1,5 @@
 # terraform-ikigai-aws-infrastructure
-The submodules creates all of the AWS infrastructure necessary to launch the Ikigai application.
+The submodules create all of the AWS infrastructure necessary to launch the Ikigai application.
 
 The following IAM permission policy must be attached to the user/role that will be assumed when deploying the remaining Ikigai Infrastructure using terraform.
 

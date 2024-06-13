@@ -42,6 +42,39 @@ module "eks" {
       }
     }
 
+    pipeline = {
+      name = var.pipeline_ng_name
+
+      instance_types = [var.pipeline_ng_instance_type]
+
+      min_size     = var.pipeline_ng_min_size
+      max_size     = var.pipeline_ng_max_size
+      desired_size = var.pipeline_ng_desired_size
+
+      disk_size = var.pipeline_ng_disk_size
+      xvda = {
+        device_name = "/dev/xvda"
+        ebs         = {
+          volume_size           = var.pipeline_ng_disk_size
+          volume_type           = var.pipeline_ng_volume_type
+          iops                  = var.pipeline_ng_ebs_iops
+          throughput            = var.pipeline_ng_ebs_throughput
+          encrypted             = var.pipeline_ng_ebs_encrypted
+          delete_on_termination = var.pipeline_ng_ebs_delete_on_termination
+        }
+      }
+
+      labels = {
+        role = "pipeline"
+      }
+
+      iam_instance_profile_name = var.use_node_instance_role ? [aws_iam_role.node_instance_role.name] : []
+
+      tags = {
+        role = "pipeline"
+      }
+    }
+
     service_node_group = {
       name = var.service_ng_name
 
@@ -64,7 +97,40 @@ module "eks" {
       }
     }
 
-    dremio_node_group = {
+    service = {
+      name = var.service_ng_name
+
+      instance_types = [var.service_ng_instance_type]
+
+      min_size     = var.service_ng_min_size
+      max_size     = var.service_ng_max_size
+      desired_size = var.service_ng_desired_size
+
+      disk_size = var.service_ng_disk_size
+      xvda = {
+        device_name = "/dev/xvda"
+        ebs         = {
+          volume_size           = var.service_ng_disk_size
+          volume_type           = var.service_ng_volume_type
+          iops                  = var.service_ng_ebs_iops
+          throughput            = var.service_ng_ebs_throughput
+          encrypted             = var.service_ng_ebs_encrypted
+          delete_on_termination = var.service_ng_ebs_delete_on_termination
+        }
+      }
+
+      labels = {
+        role = "service"
+      }
+
+      iam_instance_profile_name = var.use_node_instance_role ? [aws_iam_role.node_instance_role.name] : []
+
+      tags = {
+        role = "service"
+      }
+    }
+
+    dremio = {
       name = var.dremio_ng_name
 
       instance_types = [var.dremio_ng_instance_type]
@@ -73,6 +139,19 @@ module "eks" {
       desired_size = var.dremio_ng_desired_size
 
       disk_size = var.dremio_ng_disk_size
+      block_device_mappings = {
+      xvda = {
+        device_name = "/dev/xvda"
+        ebs         = {
+          volume_size           = var.dremio_ng_disk_size
+          volume_type           = var.dremio_ng_volume_type
+          iops                  = var.dremio_ng_ebs_iops
+          throughput            = var.dremio_ng_ebs_throughput
+          encrypted             = var.dremio_ng_ebs_encrypted
+          delete_on_termination = var.dremio_ng_ebs_delete_on_termination
+        }
+      }
+    }
 
       labels = {
         role = "dremio"
