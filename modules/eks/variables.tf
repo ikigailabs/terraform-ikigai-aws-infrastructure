@@ -234,6 +234,72 @@ variable "dremio_ng_ebs_delete_on_termination" {
   default     = true
 }
 
+variable "kuberay_ng_name" {
+  description = "Name of the kuberay node group"
+  type        = string
+  default     = "kuberay-nodegroup"
+}
+
+variable "kuberay_ng_min_size" {
+  description = "The minimum size of the kuberay node group"
+  type        = number
+  default     = 4
+}
+
+variable "kuberay_ng_max_size" {
+  description = "The maximum size of the kuberay node group"
+  type        = number
+  default     = 4
+}
+
+variable "kuberay_ng_desired_size" {
+  description = "The desired size of the kuberay node group"
+  type        = number
+  default     = 4
+}
+
+variable "kuberay_ng_instance_type" {
+  description = "The instance type of the kuberay node group"
+  type        = string
+  default     = "r5d.4xlarge"
+}
+
+variable "kuberay_ng_disk_size" {
+  description = "The disk size of the kuberay node group (in GiB)"
+  type        = number
+  default     = 200
+}
+
+variable "kuberay_ng_volume_type" {
+  description = "The ebs volume type of the kuberay node group"
+  type        = string
+  default     = "gp3"
+}
+
+variable "kuberay_ng_ebs_iops" {
+  description = "The ebs iops of the kuberay node group"
+  type        = number
+  default     = 3000
+}
+
+variable "kuberay_ng_ebs_throughput" {
+  description = "The ebs throughput of the kuberay node group"
+  type        = number
+  default     = 125
+}
+
+variable "kuberay_ng_ebs_encrypted" {
+  description = "Whether ebs storage of the kuberay node group is encrypted"
+  type        = bool
+  default     = true
+}
+
+variable "kuberay_ng_ebs_delete_on_termination" {
+  description = "Whether ebs storage of the kuberay node group is deleted on termination"
+  type        = bool
+  default     = true
+}
+
 variable "use_node_instance_role" {
   description = "Flag to determine if node group will have an custom IAM role"
   type        = bool

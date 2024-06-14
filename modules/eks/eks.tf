@@ -163,6 +163,40 @@ module "eks" {
         role = "dremio"
       }
     }
+
+    kuberay = {
+      name = var.kuberay_ng_name
+
+      instance_types = [var.kuberay_ng_instance_type]
+      min_size     = var.kuberay_ng_min_size
+      max_size     = var.kuberay_ng_max_size
+      desired_size = var.kuberay_ng_desired_size
+
+      disk_size = var.kuberay_ng_disk_size
+      block_device_mappings = {
+      xvda = {
+        device_name = "/dev/xvda"
+        ebs         = {
+          volume_size           = var.kuberay_ng_disk_size
+          volume_type           = var.kuberay_ng_volume_type
+          iops                  = var.kuberay_ng_ebs_iops
+          throughput            = var.kuberay_ng_ebs_throughput
+          encrypted             = var.kuberay_ng_ebs_encrypted
+          delete_on_termination = var.kuberay_ng_ebs_delete_on_termination
+        }
+      }
+    }
+
+      labels = {
+        role = "kuberay"
+      }
+
+      iam_instance_profile_name = var.use_node_instance_role ? [aws_iam_role.node_instance_role.name] : []
+
+      tags = {
+        role = "kuberay"
+      }
+    }
   }
 }
 
