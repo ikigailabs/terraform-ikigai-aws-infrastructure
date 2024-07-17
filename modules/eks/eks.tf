@@ -8,7 +8,7 @@ module "eks" {
 
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
-  iam_role_name = aws_iam_role.node_instance_role.name # <- this isn't in platform_aws?
+  iam_role_name = aws_iam_role.node_instance_role.name
 
   vpc_id                         = var.vpc_id
   subnet_ids                     = [var.private_subnet_1_id, var.private_subnet_2_id]

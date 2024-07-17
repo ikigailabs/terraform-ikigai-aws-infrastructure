@@ -3,12 +3,6 @@ variable "aws_region" {
   type        = string
 }
 
-variable "anyscale_bucket_name" {
-  description = "Name of S3 bucket for anyscale logs"
-  type        = string
-  default     = "ikigai-anyscale"
-}
-
 variable "ikigai_logs_bucket_name" {
   description = "Name of S3 bucket for logs"
   type        = string

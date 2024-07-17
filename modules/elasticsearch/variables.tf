@@ -26,7 +26,7 @@ variable "vpn_security_group_id" {
 variable "component_logs_name" {
   type        = string
   description = "name of Ikigai component logs elasticsearch instance"
-  default     = "component-logs"
+  default     = "component-logs-ikigai"
 }
 
 variable "component_logs_version" {
@@ -50,7 +50,7 @@ variable "component_logs_instance_type" {
 variable "component_logs_master_count" {
   type        = number
   description = "number of master instances for Ikigai component logs elasticsearch instance"
-  default     = 3
+  default     = 1
 }
 
 variable "component_logs_master_type" {
@@ -102,7 +102,7 @@ variable "component_logs_ebs_iops" {
 variable "monitor_elasticsearch_name" {
   type        = string
   description = "name of Ikigai monitoring elasticsearch instance"
-  default     = "monitoring"
+  default     = "monitor-ikigai"
 }
 
 variable "monitor_elasticsearch_version" {

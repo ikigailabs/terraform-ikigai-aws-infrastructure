@@ -168,7 +168,7 @@ variable "pipeline_password" {
 }
 
 
-# pipeline
+# superset
 variable "superset_server_name" {
   description = "the name for the pipeline server"
   type        = string

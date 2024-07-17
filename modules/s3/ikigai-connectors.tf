@@ -10,7 +10,7 @@ resource "aws_s3_bucket_ownership_controls" "ikigai-connectors-ownership-control
     object_ownership = "ObjectWriter"
   }
 }
- 
+
 # Set the access control level for the bucket
 resource "aws_s3_bucket_acl" "ikigai-connectors-acl" {
   bucket = aws_s3_bucket.ikigai-connectors-prod.id
