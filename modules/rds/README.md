@@ -53,11 +53,11 @@ For example, to set the `airbyte_server_name` input to `airbyte`, add `airbyte_s
 | dashhub_server_instance | Instance type for the Dashhub RDS server | `string` | `"db.t3.small"` | no |
 | dashhub_server_name | Name of the Dashhub RDS server | `string` | `"dashhub-ikigai"` | no |
 | dashhub_server_storage | Allocated storage for the Dashhub RDS server (in gibibytes) | `number` | `20` | no |
-| database_password | Password for the database storage RDS server | `string` | n/a | yes |
-| database_username | Username for the database storage RDS server | `string` | n/a | yes |
-| database_server_instance | Instance type for the database storage RDS server | `string` | `"db.t3.small"` | no |
-| database_server_name | Name of the database storage RDS server | `string` | `"database-storage-ikigai"` | no |
-| database_server_storage | Allocated storage for the database storage RDS server (in gibibytes) | `number` | `20` | no |
+| database_storage_server_password | Password for the database_storage RDS server | `string` | n/a | yes |
+| database_storage_server_username | Username for the database_storage RDS server | `string` | n/a | yes |
+| database_storage_server_instance | Instance type for the database_storage RDS server | `string` | `"db.t3.small"` | no |
+| database_storage_server_name | Name of the database_storage RDS server | `string` | `"database-storage-ikigai"` | no |
+| database_storage_server_storage | Allocated storage for the database_storage RDS server (in gibibytes) | `number` | `20` | no |
 | engine_version | Postgres engine version for all RDS servers | `string` | `"12.17"` | no |
 | jupyterhub_password | Password for the Jupyterhub RDS server | `string` | n/a | yes |
 | jupyterhub_username | Username for the Jupyterhub RDS server | `string` | n/a | yes |
@@ -66,19 +66,19 @@ For example, to set the `airbyte_server_name` input to `airbyte`, add `airbyte_s
 | jupyterhub_server_storage | Allocated storage for the Jupyterhub RDS server (in gibibytes) | `number` | `20` | no |
 | monitoring_interval | Interval, in seconds, between points when Enhanced Monitoring metrics are collected | `number` | `60` | no |
 | parameter_group_name | The parameter group name for all created RDS servers | `number` | `"default.postgres12"` | no |
-| pipeline_password | Password for the pipeline staging RDS server | `string` | n/a | yes |
-| pipeline_username | Username for the pipeline staging RDS server | `string` | n/a | yes |
-| pipeline_server_instance | Instance type for the pipeline staging RDS server | `string` | `"db.m5.xlarge"` | no |
-| pipeline_server_name | Name of the pipeline staging RDS server | `string` | `"pipeline-staging-ikigai"` | no |
+| pipeline_password | Password for the pipeline_staging RDS server | `string` | n/a | yes |
+| pipeline_username | Username for the pipeline_staging RDS server | `string` | n/a | yes |
+| pipeline_server_instance | Instance type for the pipeline_staging RDS server | `string` | `"db.m5.xlarge"` | no |
+| pipeline_server_name | Name of the pipeline_staging RDS server | `string` | `"pipeline-staging-ikigai"` | no |
 | pipeline_server_storage | Allocated storage for the pipeline staging RDS server (in gibibytes) | `number` | `50` | no |
 | port | The database port for all created RDS servers | `number` | `5432` | no |
 | rds_subnet_1_id | Id of the first of two rds subnets that the RDS servers will be deployed in | `string` | n/a | yes |
 | rds_subnet_2_id | Id of the second of two rds subnets that the RDS servers will be deployed in | `string` | n/a | yes |
-| service_metadata_password | Password for the service metadata RDS server | `string` | n/a | yes |
-| service_metadata_username | Username for the service metadata RDS server | `string` | n/a | yes |
-| service_metadata_server_instance | Instance type for the service metadata RDS server | `string` | `"db.t2.small"` | no |
-| service_metadata_server_name | Name of the service metadata RDS server | `string` | `"service-metadata-ikigai"` | no |
-| service_metadata_server_storage | Allocated storage for the service metadata RDS server (in gibibytes) | `number` | `100` | no |
+| service_metadata_password | Password for the service_metadata RDS server | `string` | n/a | yes |
+| service_metadata_username | Username for the service_metadata RDS server | `string` | n/a | yes |
+| service_metadata_server_instance | Instance type for the service_metadata RDS server | `string` | `"db.t2.small"` | no |
+| service_metadata_server_name | Name of the service_metadata RDS server | `string` | `"service-metadata-ikigai"` | no |
+| service_metadata_server_storage | Allocated storage for the service_metadata RDS server (in gibibytes) | `number` | `100` | no |
 | superset_password | Password for the Superset RDS server | `string` | n/a | yes |
 | superset_username | Username for the Superset RDS server | `string` | n/a | yes |
 | superset_server_instance | Instance type for the Superset RDS server | `string` | `"db.t3.small"` | no |

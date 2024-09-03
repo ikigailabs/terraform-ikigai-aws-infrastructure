@@ -4,7 +4,7 @@ data "aws_iam_policy" "ebs_csi_policy" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.15.3"
+  version = "20.24.0"
 
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
@@ -19,7 +19,6 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-
     pipeline = {
       name = var.pipeline_ng_name
 
