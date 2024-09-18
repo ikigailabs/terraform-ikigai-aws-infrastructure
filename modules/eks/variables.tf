@@ -306,3 +306,7 @@ variable "use_node_instance_role" {
   default     = true
 }
 
+variable "trusted_iam_role" {
+  description = "This is a role which has the permission to assume the cluster iam role identity"
+  type        = string
+}
