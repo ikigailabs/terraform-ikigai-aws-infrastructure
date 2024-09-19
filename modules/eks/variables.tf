@@ -310,3 +310,9 @@ variable "trusted_iam_role" {
   description = "This is a role which has the permission to assume the cluster iam role identity"
   type        = string
 }
+
+variable "enable_creator_admin_permissions" {
+  description = "Enable the aws account used to launch the cluster to be granted admin permissions"
+  type        = bool
+  default     = false
+}

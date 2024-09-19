@@ -5,14 +5,18 @@ data "aws_iam_policy" "ebs_csi_policy" {
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "20.24.0"
+  create_iam_role = "false"
+  iam_role_arn = aws_iam_role.node_instance_role.arn
+
 
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
-  iam_role_name = aws_iam_role.node_instance_role.name
 
   vpc_id                         = var.vpc_id
   subnet_ids                     = [var.private_subnet_1_id, var.private_subnet_2_id]
   cluster_endpoint_public_access = true
+
+  enable_cluster_creator_admin_permissions = var.enable_creator_admin_permissions
 
   eks_managed_node_group_defaults = {
     ami_type = var.ami_type

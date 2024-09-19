@@ -2,20 +2,20 @@ resource "aws_iam_role" "node_instance_role" {
   name = "NodeInstanceIAMRole"
 
   assume_role_policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "EKSClusterAssumeRole",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": [
-                    var.trusted_iam_role
-                ]
-            },
-            "Action": "sts:AssumeRole"
-        }
-    ]
-})
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "EKSClusterAssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                    "AWS": [
+                        var.trusted_iam_role
+                    ]
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    })
 
   inline_policy {
       name = "NodeInstanceIAMRoleTrustPolicy"
