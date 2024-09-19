@@ -18,6 +18,23 @@ module "eks" {
 
   enable_cluster_creator_admin_permissions = var.enable_creator_admin_permissions
 
+  access_entries = {
+
+    iam_role_policy_entry = {
+      kubernetes_groups = []
+      principal_arn     = aws_iam_role.node_instance_role.arn
+
+      policy_associations = {
+        example = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
+          access_scope = {
+            type       = "cluster"
+          }
+        }
+      }
+    }
+  }
+
   eks_managed_node_group_defaults = {
     ami_type = var.ami_type
   }
