@@ -106,6 +106,39 @@ module "eks" {
       }
     }
 
+    airbyte = {
+      name = "airbyte-nodegroup"
+
+      instance_types = ["r5.4xlarge"]
+
+      min_size     = 2
+      max_size     = 2
+      desired_size = 2
+
+      disk_size = 100
+      xvda = {
+        device_name = "/dev/xvda"
+        ebs         = {
+          volume_size           = 100
+          volume_type           = "gp2"
+          iops                  = 3000
+          throughput            = 125
+          encrypted             = true
+          delete_on_termination = true
+        }
+      }
+
+      labels = {
+        role = "airbyte"
+      }
+
+      iam_instance_profile_name = var.use_node_instance_role ? [aws_iam_role.node_instance_role.name] : []
+
+      tags = {
+        role = "airbyte"
+      }
+    }
+
     dremio = {
       name = var.dremio_ng_name
 
